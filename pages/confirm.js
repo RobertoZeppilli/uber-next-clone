@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import Link from 'next/link'
 
-import { ConfirmWrapper, RideContainer, ConfirmButtonContainer, ConfirmButton, BackButtonContainer, BackButton } from './tailwind-components/confirm-page-components'
+import { ConfirmWrapper, RideContainer, BackButtonContainer, BackButton } from './tailwind-components/confirm-page-components'
 
 import { getCoordinates } from './functions/get-coordinates'
 
@@ -14,8 +14,8 @@ const Confirm = () => {
     const router = useRouter()
     const { pickup, dropoff } = router.query
 
-    const [pickupCoordinates, setPickupCoordinates] = useState([0,0])
-    const [dropoffCoordinates, setDropoffCoordinates] = useState([0,0])
+    const [pickupCoordinates, setPickupCoordinates] = useState([0, 0])
+    const [dropoffCoordinates, setDropoffCoordinates] = useState([0, 0])
 
     useEffect(() => {
         getCoordinates(pickup, setPickupCoordinates)
@@ -31,9 +31,6 @@ const Confirm = () => {
         <Map pickupCoordinates={pickupCoordinates} dropoffCoordinates={dropoffCoordinates} />
         <RideContainer>
             <RideSelector pickupCoordinates={pickupCoordinates} dropoffCoordinates={dropoffCoordinates} />
-            <ConfirmButtonContainer>
-                <ConfirmButton>Confirm Ride</ConfirmButton>
-            </ConfirmButtonContainer>
         </RideContainer>
     </ConfirmWrapper>);
 };

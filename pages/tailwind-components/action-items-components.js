@@ -8,11 +8,12 @@ export const UberLogo = tw.img`
 `
 export const Profile = tw.div`
     flex items-center
+    text-center
 `
 export const Name = tw.div`
     mr-4 w-20
     text-sm
-    font-medium
+    font-bold
 `
 export const UserImage = tw.img`
     h-12 w-12
@@ -26,11 +27,12 @@ export const ActionButtons = tw.div`
 export const ActionButton = tw.div`
     flex-1
     flex items-center flex-col justify-center
-    m-4 h-32
+    m-1 h-32
     bg-gray-200 rounded-lg
-    transform transition
-    hover:scale-105
-    text-xl
+    transition
+    hover:bg-gray-800
+    hover:text-white
+    font-bold
     cursor-pointer
 `
 export const ActionButtonImage = tw.img`

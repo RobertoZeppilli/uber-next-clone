@@ -68,7 +68,7 @@ export const ConfirmLocationButton = tw.button`
     p-2
     w-full
     text-white
-    text-xl
+    font-bold
     rounded-md
     outline-none border-none
     transform transition

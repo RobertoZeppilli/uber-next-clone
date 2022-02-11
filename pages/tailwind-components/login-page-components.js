@@ -2,7 +2,6 @@ import tw from "tailwind-styled-components"
 
 export const Wrapper = tw.div`
     flex flex-col items-center
-
     bg-gray-200
     p-4
 `
@@ -12,6 +11,7 @@ export const SignInButton = tw.button`
     text-center
     py-4 my-4
     w-full
+    font-bold
 `
 export const Title = tw.div`
     text-5xl

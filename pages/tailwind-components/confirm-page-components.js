@@ -22,7 +22,7 @@ export const RideContainer = tw.div`
     flex flex-col
     flex-1
 `
-export const RideSelectorContainer = tw.div`
+export const RideSelectorContainer = tw.form`
     flex flex-col
     flex-1
     overflow-y-scroll
@@ -31,16 +31,18 @@ export const ConfirmButtonContainer = tw.div`
     mt-4 p-2
     border-t-2
 `
-export const ConfirmButton = tw.div`
+export const ConfirmButton = tw.button`
     text-white
     bg-black
     text-center
     py-2
     text-xl
     rounded-md
+    w-full
     outline-none border-none
-    transform transition
+    transition
     hover:bg-gray-800
+    font-bold
     cursor-pointer
 `
 export const Title = tw.div`
@@ -53,9 +55,15 @@ export const Title = tw.div`
 export const CarsList = tw.div`
     overflow-y-scroll
 `
-export const Car = tw.div`
+export const Car = tw.label`
     flex items-center
     p-4
+    hover:bg-gray-200
+    transition
+    cursor-pointer
+`
+export const RadioButton = tw.input`
+
 `
 export const CarImage = tw.img`
     h-14

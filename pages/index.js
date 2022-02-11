@@ -59,7 +59,7 @@ export default function Home() {
         </ActionButtons>
 
         <InputButton>
-
+          Where To?
         </InputButton>
       </ActionItems>
     </Wrapper>
