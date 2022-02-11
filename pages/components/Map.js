@@ -6,7 +6,7 @@ import {pickupMarkerColor, dropoffMarkerColor} from "../utils/marker-colors"
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9iZXJ0b3plcHBpbGxpIiwiYSI6ImNremgzazFrYjE5cnAydXBkcGpuN3V1NGsifQ.tg5kLySOIpP24EPb6tPIig';
 
-const Map = (props) => {
+const Map = ({pickupCoordinates, dropoffCoordinates}) => {
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: 'map',
@@ -14,18 +14,24 @@ const Map = (props) => {
             center: [-99.29011, 39.39172],
             zoom: 3
         });
-        if (props.pickupCoordinates && props.dropoffCoordinates) {
-            addMarkerToMap(map, props.pickupCoordinates, pickupMarkerColor)
-            addMarkerToMap(map, props.dropoffCoordinates, dropoffMarkerColor)
 
-            // AUTO ZOOM
+        // ADD MARKERS IF THEY ARE PRESENT
+        if(pickupCoordinates) {
+            addMarkerToMap(map, pickupCoordinates, pickupMarkerColor)
+        }
+        if(dropoffCoordinates) {
+            addMarkerToMap(map, dropoffCoordinates, dropoffMarkerColor)
+        }
+
+        // AUTO ZOOM
+        if (pickupCoordinates && dropoffCoordinates) {
             map.fitBounds([
-                props.dropoffCoordinates,
-                props.pickupCoordinates,
+                dropoffCoordinates,
+                pickupCoordinates,
             ], { padding: 50 })
         }
 
-    }, [props]);
+    }, [pickupCoordinates, dropoffCoordinates]);
 
     return (<MapContainer id="map"></MapContainer>);
 };

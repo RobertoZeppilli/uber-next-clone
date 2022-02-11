@@ -5,7 +5,7 @@ export const SearchWrapper = tw.div`
     bg-gray-200
 `
 export const ButtonContainer = tw.div`
-    bg-white
+    bg-gray-200
     cursor-pointer
 `
 export const BackButton = tw.img`
@@ -74,4 +74,17 @@ export const ConfirmLocationButton = tw.button`
     transform transition
     hover:bg-gray-800
     cursor-pointer
+`
+export const WaitForButton = tw.div`
+    py-2
+    text-gray-500
+    text-center
+    text-xs
+    border-b
+`
+export const ButtonIcon = tw.span`
+    bg-black
+    text-white
+    p-1 ml-2
+    rounded-md
 `

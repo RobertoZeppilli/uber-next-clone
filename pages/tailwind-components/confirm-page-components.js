@@ -3,6 +3,19 @@ import tw from "tailwind-styled-components"
 export const ConfirmWrapper = tw.div`
     h-screen
     flex flex-col
+    relative
+`
+export const BackButton = tw.img``
+export const BackButtonContainer = tw.div`
+    absolute
+    top-3
+    left-3
+    z-10
+    bg-white
+    rounded-full
+    cursor-pointer
+    transform transition
+    hover:bg-gray-200
 `
 export const RideContainer = tw.div`
     h-1/2

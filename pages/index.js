@@ -3,7 +3,29 @@ import { Wrapper, ActionItems } from './tailwind-components/map-components'
 import { Header, UberLogo, Profile, Name, UserImage, ActionButtons, ActionButton, ActionButtonImage, InputButton } from './tailwind-components/action-items-components'
 import Link from 'next/link'
 
+import { useEffect, useState } from 'react'
+import { auth } from '../firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { useRouter } from 'next/router'
+
 export default function Home() {
+  const router = useRouter()
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    return onAuthStateChanged(auth, user => {
+      if (user) {
+        setUser({
+          name: user.displayName,
+          photoUrl: user.photoURL
+
+        })
+      } else {
+        setUser(null)
+        router.push('/login')
+      }
+    })
+  })
 
   return (
     <Wrapper>
@@ -12,8 +34,10 @@ export default function Home() {
         <Header>
           <UberLogo src="https://1000marche.net/wp-content/uploads/2020/03/Uber-logo-1536x1024.png" />
           <Profile>
-            <Name>Roby</Name>
-            <UserImage src="https://upload.wikimedia.org/wikipedia/commons/8/87/Avatar_poe84it.png" />
+            <Name>{user && user.name}</Name>
+            <UserImage
+              src={user && user.photoUrl}
+              onClick={() => signOut(auth)} />
           </Profile>
         </Header>
         <ActionButtons>
@@ -35,7 +59,7 @@ export default function Home() {
         </ActionButtons>
 
         <InputButton>
-        
+
         </InputButton>
       </ActionItems>
     </Wrapper>

@@ -12,13 +12,13 @@ export const Profile = tw.div`
 export const Name = tw.div`
     mr-4 w-20
     text-sm
+    font-medium
 `
 export const UserImage = tw.img`
     h-12 w-12
     rounded-full
-    bg-indigo-500
-    p-2
     border-2 border-green-500
+    cursor-pointer
 `
 export const ActionButtons = tw.div`
     flex w-full

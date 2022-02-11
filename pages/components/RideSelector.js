@@ -1,10 +1,17 @@
+import { useEffect, useState } from 'react'
 import { RideSelectorContainer, Title, CarsList, Car, CarImage, CarDetails, CarPrice, Service, Time } from '../tailwind-components/confirm-page-components'
 
 import { cars } from '../utils/carList'
+import { getRideDuration } from '../functions/get-coordinates'
 
 console.log(cars)
 
-const RideSelector = () => {
+const RideSelector = ({ pickupCoordinates, dropoffCoordinates }) => {
+    const [rideDuration, setRideDuration] = useState(0)
+
+    useEffect(() => {
+        getRideDuration(pickupCoordinates, dropoffCoordinates, setRideDuration)
+    }, [pickupCoordinates, dropoffCoordinates])
     return (
         <RideSelectorContainer>
             <Title>Choose a ride, or swipe up for more!</Title>
@@ -16,7 +23,9 @@ const RideSelector = () => {
                             <Service>{car.service}</Service>
                             <Time>5 min away</Time>
                         </CarDetails>
-                        <CarPrice>$24.00</CarPrice>
+                        <CarPrice>{ rideDuration ? '$' + (rideDuration * car.multiplier).toFixed(2) :
+                            'Calulating price...'
+                        }</CarPrice>
                     </Car>)
                 })}
             </CarsList>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SearchWrapper, ButtonContainer, BackButton, InputContainer, FromToIcons, Circle, Line, Square, InputBoxes, Input, PlusIcon, SavedPlaces, StarIcon, ConfirmContainer, ConfirmLocationButton } from "./tailwind-components/search-page-components";
+import { SearchWrapper, ButtonContainer, BackButton, InputContainer, FromToIcons, Circle, Line, Square, InputBoxes, Input, PlusIcon, SavedPlaces, StarIcon, ConfirmContainer, ConfirmLocationButton, WaitForButton, ButtonIcon } from "./tailwind-components/search-page-components";
 
 import Link from 'next/link'
 
@@ -36,11 +36,11 @@ const Search = () => {
             Saved Places
         </SavedPlaces>
         <ConfirmContainer>
-            <Link href={{ pathname: "/confirm", query: { pickup, dropoff } }} passHref>
+            {pickup && dropoff ? <Link href={{ pathname: "/confirm", query: { pickup, dropoff } }} passHref>
                 <ConfirmLocationButton>
                     Confirm Location
                 </ConfirmLocationButton>
-            </Link>
+            </Link> : <WaitForButton>Enter locations to see the <ButtonIcon>Button</ButtonIcon></WaitForButton>}
         </ConfirmContainer>
     </SearchWrapper>;
 };
