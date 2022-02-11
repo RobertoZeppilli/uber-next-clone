@@ -17,6 +17,12 @@ const Map = (props) => {
         if (props.pickupCoordinates && props.dropoffCoordinates) {
             addMarkerToMap(map, props.pickupCoordinates, pickupMarkerColor)
             addMarkerToMap(map, props.dropoffCoordinates, dropoffMarkerColor)
+
+            // AUTO ZOOM
+            map.fitBounds([
+                props.dropoffCoordinates,
+                props.pickupCoordinates,
+            ], { padding: 50 })
         }
 
     }, [props]);

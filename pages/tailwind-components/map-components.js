@@ -9,5 +9,5 @@ export const Wrapper = tw.div`
     flex flex-col
 `
 export const MapContainer = tw.div`
-    flex-1
+    flex-1 h-1/2
 `

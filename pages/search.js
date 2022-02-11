@@ -1,9 +1,12 @@
-// import React from 'react';
+import { useState } from 'react';
 import { SearchWrapper, ButtonContainer, BackButton, InputContainer, FromToIcons, Circle, Line, Square, InputBoxes, Input, PlusIcon, SavedPlaces, StarIcon, ConfirmContainer, ConfirmLocationButton } from "./tailwind-components/search-page-components";
 
 import Link from 'next/link'
 
 const Search = () => {
+    const [pickup, setPickup] = useState("")
+    const [dropoff, setDropoff] = useState("")
+
     return <SearchWrapper>
         <Link href="/" passHref>
             <ButtonContainer>
@@ -17,8 +20,14 @@ const Search = () => {
                 <Square src="https://img.icons8.com/ios-filled/50/9CA3AF/square.png" />
             </FromToIcons>
             <InputBoxes>
-                <Input placeholder="Enter pickup Location..." />
-                <Input placeholder="Whero To?" />
+                <Input
+                    value={pickup}
+                    onChange={(e) => setPickup(e.target.value)}
+                    placeholder="Enter pickup Location..." />
+                <Input
+                    value={dropoff}
+                    onChange={(e) => setDropoff(e.target.value)}
+                    placeholder="Whero To?" />
             </InputBoxes>
             <PlusIcon src="https://img.icons8.com/ios/50/000000/plus-math.png" />
         </InputContainer>
@@ -27,9 +36,11 @@ const Search = () => {
             Saved Places
         </SavedPlaces>
         <ConfirmContainer>
-            <ConfirmLocationButton>
-                Confirm Location
-            </ConfirmLocationButton>
+            <Link href={{ pathname: "/confirm", query: { pickup, dropoff } }} passHref>
+                <ConfirmLocationButton>
+                    Confirm Location
+                </ConfirmLocationButton>
+            </Link>
         </ConfirmContainer>
     </SearchWrapper>;
 };
