@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { CheckoutWrapper, ChoosenCar, CarImage, CarService, CarPrice } from './tailwind-components/checkout-page-components'
+import { CheckoutWrapper, ChoosenCar, CarImage, CarService, CarPrice, Title } from './tailwind-components/checkout-page-components'
 
 const Checkout = () => {
     const router = useRouter()
@@ -12,11 +12,13 @@ const Checkout = () => {
 
     return (
         <CheckoutWrapper>
+            <Title>The ride you have choosen!</Title>
             {checkoutCar && <ChoosenCar>
                 <CarImage src={checkoutCar.imgUrl} />
                 <CarService>{checkoutCar.service}</CarService>
                 <CarPrice>${(choosenRideDuration * checkoutCar.multiplier).toFixed(2)}</CarPrice>
             </ChoosenCar>}
+
         </CheckoutWrapper>
     )
 }
