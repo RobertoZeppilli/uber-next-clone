@@ -3,6 +3,9 @@ import { Wrapper, ActionItems } from './tailwind-components/map-components'
 import { Header, UberLogo, Profile, Name, UserImage, ActionButtons, ActionButton, ActionButtonImage, InputButton } from './tailwind-components/action-items-components'
 import Link from 'next/link'
 
+import { motion } from 'framer-motion';
+
+
 import { useEffect, useState } from 'react'
 import { auth } from '../firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
